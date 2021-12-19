@@ -20,3 +20,5 @@ Imports:
     kableExtra,
     knitr,
     readr
+URL: https://github.com/rckim/rkfinal
+BugReports: https://github.com/rckim/rkfinal/issues
