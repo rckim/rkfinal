@@ -6,6 +6,9 @@
 #' @return A data frame with n, percentage, and p-value (from other Fisher's or Chi-Square tests)
 #' for each variable and group
 #' @export
+#'
+#' @importFrom stats chisq.test filter fisher.test sd shapiro.test t.test wilcox.test
+
 
 CatFunctTest <- function(dat, names)
 {

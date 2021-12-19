@@ -19,6 +19,7 @@ Imports:
     gdata,
     kableExtra,
     knitr,
-    readr
+    readr,
+    stats
 URL: https://github.com/rckim/rkfinal
 BugReports: https://github.com/rckim/rkfinal/issues

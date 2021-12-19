@@ -5,7 +5,7 @@
 #'
 #' @return Variables as factors
 #' @export
-
+#'
 
 ConvertToCat <- function(df, nam)
 {

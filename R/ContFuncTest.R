@@ -6,6 +6,8 @@
 #' @return A data fram with mean, standard deviation, and p-value (either t-Test or U-test) for each
 #' group and variable
 #' @export
+#'
+#' @importFrom stats chisq.test filter fisher.test sd shapiro.test t.test wilcox.test
 
 ContFuncTest <- function(dat, names) {
   l <- length(names)
