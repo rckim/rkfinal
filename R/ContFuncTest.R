@@ -42,3 +42,4 @@ ContFuncTest <- function(dat, names) {
   newDF <- data.frame(Variable = names, GroupA_Mean = grpA_mean, GroupA_SD = grpA_SD,
                       GroupB_Mean = grpB_mean, GroupB_SD = grpB_SD, pVal = p)
 }
+
