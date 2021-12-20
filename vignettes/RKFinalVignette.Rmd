@@ -90,14 +90,13 @@ myFilteredData[CatNames] <- ConvertToCat(myFilteredData, CatNames)
 Next, we will analyze our categorical variables, using Chi-Squared tests, or if the expected value is <5, we will use Fisher's Exact tests. This process is defined in the function CatFunctTest, also included in the package.
 
 ```{r categorical analysis, eval=TRUE, warning=FALSE}
-
 CatOutput <- CatFunctTest(myFilteredData, CatNames)
 CatOutput
 
 ```
 The table is then generated from the myCatTable function, also included in the package
 
-```{r first categorical table, include=TRUE, eval=TRUE}
+```{r first categorical table, include=TRUE, eval=TRUE, warning=FALSE}
 myCatTable(CatOutput)
 ```
 
@@ -105,23 +104,41 @@ myCatTable(CatOutput)
 
 Next, we will analyze our continuous variables. To do this, we will first subset out the continuous variables into a new datafram ContData
 
-```{r continuous subset, eval=True, include=TRUE}
+```{r continuous subset, eval=TRUE, include=TRUE}
 ContData <- myFilteredData %>% select(all_of(ContNames),independent)
 ```
 
 Then we can look at the distribution for our continuous data using the Shiny App created for the package: contDataApp.R (you will need to un-comment out the lines of code after doing the above)
 
-Next we will do our statistical analysis. This will use a Student's t-Test, if the data is normally distributed (determined by the Shapiro-Wilk test for normality), or the Mann-Whitney U-test for non-normal data. This process is defined in the function ContFuncTest, included in the package.
+Next we will do our statistical analysis. This will use a Student's t-Test, if the data is normally distributed (determined by the Shapiro-Wilk test for normality), or the Mann-Whitney U-test for non-normal data. This process is defined in the function ContFuncTest, included in the package. 
 
 ```{r Continuous analysis, eval=TRUE, warning=FALSE}
 ContOutput <- ContFuncTest(ContData,ContNames)
+ContOutput
 ```
 
 Finally, to make our table, we use the myContTable function
 
-```{r continuous table, eval=TRUE, include=TRUE}
+```{r continuous table, eval=TRUE, include=TRUE, warning=FALSE}
 myContTable(ContOutput)
 ```
 ## Testing the package: Example 2
 
-For our second example, I will generate a sample dataset to use. I've included it in this package folder:
+For our second example, I will generate a sample dataset to use. I've included it in this package folder: sample_data.rda. This data has two continuous variables (Cont_var_1 and Cont_var_2) and two categorical variables (Cat_var_1 and cat_var_2). The grouping variable is Group_var. This time, I will run the code as one chunk, rather than piecemealing it. 
+
+```{r example 2 data, include=TRUE, eval=TRUE, warning=FALSE}
+myFilteredData <- sample_data
+myFilteredData$independent <- myFilteredData$Group_var
+GroupNames <- c("Group 1", "Group 2")
+CatNames <- c("Cat_var_1", "Cat_var_2")
+ContNames <- c("Cont_Var_1", "Cont_var_2")
+
+myFilteredData[CatNames] <- ConvertToCat(myFilteredData, CatNames)
+CatOutput <- CatFunctTest(myFilteredData, CatNames)
+myCatTable(CatOutput)
+
+ContData <- myFilteredData %>% select(all_of(ContNames),independent)
+ContOutput <- ContFuncTest(ContData,ContNames)
+myContTable(ContOutput)
+```
+

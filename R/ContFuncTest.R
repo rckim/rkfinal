@@ -32,14 +32,18 @@ ContFuncTest <- function(dat, names) {
   grpA_SD <- seq(1, length(names))
   grpB_SD <- seq(1, length(names))
   j <- 1
+  datagrp1 <- dat %>% dplyr::filter(independent==0)
+  datagrp2 <- dat %>% dplyr::filter(independent==1)
   for (j in 1:length(names)) {
     grpA_mean[j] <- myT[[j]][["estimate"]][[1]]
     grpB_mean[j] <- myT[[j]][["estimate"]][[2]]
-    grpA_SD[j] <- sd((dat %>% filter(independent == 0))[[j]], na.rm = T)
-    grpB_SD[j] <- sd((dat %>% filter(independent == 1))[[j]], na.rm = T)
+    grpA_SD[j] <- sd(datagrp1[[j]], na.rm = T)
+    grpB_SD[j] <- sd(datagrp2[[j]], na.rm = T)
     j <- j+1
   }
+
   newDF <- data.frame(Variable = names, GroupA_Mean = grpA_mean, GroupA_SD = grpA_SD,
                       GroupB_Mean = grpB_mean, GroupB_SD = grpB_SD, pVal = p)
 }
+
 
