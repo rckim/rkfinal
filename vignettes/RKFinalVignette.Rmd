@@ -151,3 +151,7 @@ ContOutput <- ContFuncTest(ContData,ContNames)
 myContTable(ContOutput)
 ```
 
+## Future Work and Plans
+I plan to use this R package to assist me with future data analyses for my project. For example, my next project will be looking at whether the location at which patients received their neoadjuvant chemotherapy affect how long they take to get to surgery. Another project  I have in the works is looking at different predictors of the development of postoperative pancreatic fistula after partial pancreatectomy when early drain amylase levels are low. All of these projects will require similar data analyses. Even for projects that require more complex data analyses outside the current scope of this package, such as those needing survival analysis or linear modeling, I can still use this package to conduct analyses on patient demographics (age, race, sex, bmi, etc)
+
+Later, with more experience and practice, I hope to expand this package to include linear modeling and survival analysis, like generating Kaplan-Meier curves 
